@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>todos</title>
+  <script src="index.js" async defar></script>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      box-sizing: border-box;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      color: black;
+      background: #EEE url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAHlBMVEUAAADs7uzc3tzk5uTU0tTU1tTs6uzc2tzk4uTMzszWU7G5AAAAAXRSTlMAQObYZgAAA91JREFUOI0N0jl6qlAAQOG7hWhELWUQLAMIWAqXwVJk0JJJtAyDQKmoMWVABHf73hLO/x3wFtEBeS4ovoNZd4G3U6f429w/AfOabtNOZ1F7NRQnhtP6ZOyPsRM4dKo47LXzVpU/5vjfsZquOO5vWQDNG1x56ZrgeYSX62f59aHiVPtCwPjintU6zkN9F39BST3ll+/j/noB0cuZwtEkUTdrlug3Ge8dxOMmw4DG27oBYei/X0QLxVybCRJDthWwtfT7R6xvx14jVcTCf5Rk2QqxBmx2m7UaK+75ZH+W6Vz9orRz0mWgJCvzocVswZLhls23IZ2tcLJ0AYJjw7RfZorq0E9jkDdYagqyrQJeGN/ycl2Tvx+EdPoaPu/XNsSCA0CUqrr58WvE61UcPMLQs07PvyoH/Sypph4WkPta61HV2lwpetJpDZCUB8rNhHVUMGcYiRd9UfSJCNUBREkx2s0PMO98szUnLgIHiAQlUJT7I+qf6I8BTca1bIqbmUiuchSwOG2UtOfLysISHT8hpht8Z3gNWKDqZU/qPYOi3JzkoJPnhWa6HuDNMMIqJkUbrpSbh45rAoLXKgPgu1DQbQuDT6GD0HXTRAqwDB8BxaeGKcYbCowSzsAbLsOut+l+DEijx1FenrSfsrfIFklEkAx3dJ5gSdz4SewT1Egjk92n+bT9ne1ZN0BvMfvTxXrJrqOQXTSl05l8U5AWxAkiXVeRCks2/sG3BF8n/NePpAC2GjZob1FvzZOsbjDeehj0tFQVMOAGSAL9ZSKz991vtgjU9nSaQAe00pYWrkyi0gfkRPIJ2nRdTZoyeN4mfx9BpQbQO+DOZWlvlLEYIT4Iuehaa9YZtzm3vjJ7i6pn9d1BQRmW6v6V1VxIsifV8ozGF5hbaoKZs5Ae9//LES/mbWZTy67ZlLEcwCvPnvCidfXtv/RyqFgRGwiSlIK18EJjDttUXF1D7lDYTPAVE/87zFUmSdl9lT+4ax9HMCSgnmyzT4Etwvl+mWd9fBtylZltFNrgChQDJuJwNtaiak3apv3diL/lyH4FNTBmNH2hlbmTpaJ2xYTfQSLezYEKPlcTnXzF8PgbHpeQYqikvbt0MgIY9Z/q6u4FsaZ17nCZ+oe5bGBz4D98hnj+yGk5P1f+bZzNly7vWmdAnhphmzL05DV8NUr2bW1juS5WKRionVOgD63G35zKLDvaiwKzH9wBS4ndY2rmH0baMcKfMCKknzvuV6BoRWk3rjbun3EgtMLXGGnNtWEI7Gg33VSssZbdG97NVJwtLZzONbA655MfbbPxIWWKCHN4tx4nJ8ziH4yHgW41TcxcAAAAAElFTkSuQmCC);
+      box-shadow: 0 0 16px rgba(0,0,0,0.5) inset;
+      overflow: hidden;
+    }
+
+    #main {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .nowLoading {
+      margin: 4em;
+      text-align: center;
+    }
+
+    .dummy {
+      height: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="dummy"></div>
+  <div id="main">
+    <div class="nowLoading">
+      Now Loading...
+    </div>
+  </div>
+</body>
+</html>
