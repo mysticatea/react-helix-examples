@@ -1,0 +1,59 @@
+package Model {
+  class TodoApp << Immutable >> {
+    + ACTIVE = 1 {static}
+    + COMPLETED = 2 {static}
+    + ALL = 3 {static}
+    + shownKind: number
+    + countItems(shownKind: number): number
+    + withItems(mutator: (items: TodoItem[]) => TodoItem[]): TodoApp
+    + withShownKind(value: number): TodoApp
+  }
+  TodoApp *-->"items 0..*" TodoItem
+  TodoApp -->"shownItems 0..*" TodoItem
+
+  class TodoItem << Immutable >> {
+    + id: string
+    + title: string
+    + completed: boolean
+    + withTitle(value: string): TodoItem
+    + withCompleted(value: boolean): TodoItem
+  }
+}
+
+package Action {
+  class "TodoApp" as TodoAppAction {
+    + addTodoItem(model: TodoApp, title: string): TodoApp {static}
+    + removeTodoItem(model: TodoApp, id: string): TodoApp {static}
+    + removeAllCompletedTodoItems(model: TodoApp): TodoApp {static}
+    + updateTodoTitle(model: TodoApp, id: string, value: string): TodoApp {static}
+    + updateTodoCompleted(model: TodoApp, id: string, value: boolean): TodoApp {static}
+    + updateAllTodoCompleted(model: TodoApp, value: boolean): TodoApp {static}
+    + updateShownKind(model: TodoApp, value: number): TodoApp {static}
+    + save(model: TodoApp): TodoApp {static}
+    + load(): TodoApp {static}
+  }
+
+  TodoAppAction ..> TodoApp : <<use>>
+  TodoAppAction ..> TodoItem : <<use>>
+}
+
+package View {
+  class "TodoApp" as TodoAppView <<stage>>
+  class "Header" as HeaderView <<agent>>
+  class "Footer" as FooterView <<agent>>
+  class TodoList
+  class NewTodoInput <<agent>>
+  class "TodoItem" as TodoItemView <<agent>>
+
+  TodoAppView *-->"stageValue 1" TodoApp
+  TodoAppView *-->"1" HeaderView
+  TodoAppView *-->"1" FooterView
+  TodoAppView *-->"1" TodoList
+  HeaderView *-->"1" NewTodoInput
+  TodoList *-->"0..*" TodoItemView
+
+  HeaderView ..> TodoAppAction : <<use>>
+  FooterView ..> TodoAppAction : <<use>>
+  NewTodoInput ..> TodoAppAction : <<use>>
+  TodoItemView ..> TodoAppAction : <<use>>
+}
