@@ -27,7 +27,7 @@ export default class Header extends AgentComponent {
 
   onCompletedChange(event) {
     const value = event.target.checked;
-    this.requestTo(updateAllTodoCompleted, value);
+    this.request(updateAllTodoCompleted, value);
   }
 }
 

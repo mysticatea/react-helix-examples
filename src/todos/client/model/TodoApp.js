@@ -1,4 +1,4 @@
-import {List, Record} from "immutable";
+import {Seq, List, Record} from "immutable";
 import TodoItem from "./TodoItem";
 
 export const ACTIVE = 1;

@@ -44,16 +44,17 @@ export default class Footer extends AgentComponent {
           </button>
         )}
       </span>
+      <span className="todo-explain">Double-click to edit a todo</span>
     </div>;
   }
 
   onClearButtonClick(/*event*/) {
-    this.requestTo(removeAllCompletedTodoItems);
+    this.request(removeAllCompletedTodoItems);
   }
 
   onSwitchKindButtonClick(event) {
     const kind = Number(event.target.dataset.kind);
-    this.requestTo(updateShownKind, kind);
+    this.request(updateShownKind, kind);
   }
 }
 
@@ -114,6 +115,13 @@ css(`
 .todo-footer > .todo-shown-kind {
   display: inline-block;
   margin: auto;
+}
+
+.todo-footer > .todo-explain {
+  display: block;
+  color: gray;
+  font-size: 0.75em;
+  white-space: nowrap;
 }
 
 `);

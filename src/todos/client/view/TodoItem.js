@@ -79,7 +79,7 @@ export default class TodoItem extends AgentComponent {
   onCompletedChange(event) {
     const id = this.props.value.id;
     const value = event.target.checked;
-    this.requestTo(updateTodoCompleted, id, value);
+    this.request(updateTodoCompleted, id, value);
   }
 
   onLabelDoubleClick(/*event*/) {
@@ -88,14 +88,14 @@ export default class TodoItem extends AgentComponent {
 
   onRemoveButtonClick(/*event*/) {
     const id = this.props.value.id;
-    this.requestTo(removeTodoItem, id);
+    this.request(removeTodoItem, id);
   }
 
   saveTitle(value) {
     const id = this.props.value.id;
     this.setState({isEditing: false});
     if (value.trim() !== "") {
-      this.requestTo(updateTodoTitle, id, value);
+      this.request(updateTodoTitle, id, value);
     }
   }
 }
@@ -122,6 +122,7 @@ css(`
   width: 100%;
   border: none;
   border-bottom: 1px solid gray;
+  background: none;
   font-size: inherit;
 }
 
@@ -136,6 +137,7 @@ css(`
 
 .todo-item label {
   display: block;
+  font-size: inherit;
 }
 
 .todo-item .remove-button {

@@ -7,14 +7,14 @@ export default function createServer() {
   const app = koa();
   let todo;
   try {
-    todo = require("./todo/server/");
+    todo = require("./todos/server/");
   }
   catch (err) {
-    console.warn("/todo/ -- Not Found.");
+    console.warn("/todos/ -- Not Found.");
   }
 
   if (todo) {
-    app.use(koaMount("/todo", todo()));
+    app.use(koaMount("/todos", todo()));
   }
 
   return app;
@@ -22,4 +22,5 @@ export default function createServer() {
 
 if (require.main === module) {
   createServer().listen(process.argv[2] || 3000);
+  console.log("Started http://localhost:3000/todos/");
 }

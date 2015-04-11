@@ -22,13 +22,13 @@ function createServer() {
   var app = _koa2["default"]();
   var todo = undefined;
   try {
-    todo = require("./todo/server/");
+    todo = require("./todos/server/");
   } catch (err) {
-    console.warn("/todo/ -- Not Found.");
+    console.warn("/todos/ -- Not Found.");
   }
 
   if (todo) {
-    app.use(_koaMount2["default"]("/todo", todo()));
+    app.use(_koaMount2["default"]("/todos", todo()));
   }
 
   return app;
@@ -36,5 +36,6 @@ function createServer() {
 
 if (require.main === module) {
   createServer().listen(process.argv[2] || 3000);
+  console.log("Started http://localhost:3000/todos/");
 }
 module.exports = exports["default"];

@@ -26,7 +26,7 @@ export default class NewTodoInput extends AgentComponent {
       const title = input.value.trim();
       input.value = "";
       if (title !== "") {
-        this.requestTo(addTodoItem, title);
+        this.request(addTodoItem, title);
       }
     }
   }

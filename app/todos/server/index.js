@@ -19,6 +19,18 @@ var _koaStatic2 = _interopRequireWildcard(_koaStatic);
 
 function createServer() {
   var app = _koa2["default"]();
+  app.use(function* (next) {
+    // those status path return index.html.
+    switch (this.path) {
+      case "/active":
+      case "/completed":
+      case "/all":
+        this.path = "/index.html";
+        break;
+    }
+
+    yield next;
+  });
   app.use(_koaStatic2["default"](_join.join(__dirname, "../client/")));
   return app;
 }
