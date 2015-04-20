@@ -6,62 +6,19 @@ import Header from "./Header";
 import Footer from "./Footer";
 import TodoList from "./TodoList";
 
-const HAS_PUSH_STATE = (typeof history.pushState !== "undefined");
-const PATH_MAP = {
-  [TodoAppModel.ACTIVE]: "/todos/active",
-  [TodoAppModel.COMPLETED]: "/todos/completed",
-  [TodoAppModel.ALL]: "/todos/all",
-  "/todos/active": TodoAppModel.ACTIVE,
-  "/todos/completed": TodoAppModel.COMPLETED,
-  "/todos/all": TodoAppModel.ALL
-};
 
-
+// This is the root component.
+// Just this inherits StageComponent.
+// This will update its model when received send action events automatically.
 export default class TodoApp extends StageComponent {
   constructor(props) {
+    // This specifies `model` to storeValuePath.
+    // The model is saved at `this.state.model`.
     super(props, "model");
 
-    const kind = PATH_MAP[location.pathname] || TodoAppModel.ALL;
+    // This sets the initial model.
     const model = (props && props.initialModel) || new TodoAppModel();
-
-    this.state = {model: model.withShownKind(kind)};
-    this.handlePopState = this.handlePopState.bind(this);
-  }
-
-  // Setup URL-interlocking
-  componentDidMount() {
-    super.componentDidMount();
-
-    if (HAS_PUSH_STATE) {
-      const model = this.stageValue;
-      const path = PATH_MAP[model.shownKind];
-      history.replaceState(model.shownKind, null, path);
-      addEventListener("popstate", this.handlePopState);
-    }
-  }
-
-  // Teardown URL-interlocking
-  componentWillUnmount() {
-    super.componentWillUnmount();
-
-    if (HAS_PUSH_STATE) {
-      removeEventListener("popstate", this.handlePopState);
-    }
-  }
-
-  // URL-interlocking
-  componentDidUpdate(prevProps, prevState) {
-    super.componentDidUpdate();
-
-    if (HAS_PUSH_STATE) {
-      const model = this.stageValue;
-      if (model.shownKind === prevState.model.shownKind) {
-        return;
-      }
-
-      const path = PATH_MAP[model.shownKind];
-      history.pushState(model.shownKind, null, path);
-    }
+    this.state = {model};
   }
 
   render() {
@@ -81,11 +38,6 @@ export default class TodoApp extends StageComponent {
         shownKind={shownKind}
       />
     </div>;
-  }
-
-  handlePopState(event) {
-    const model = this.stageValue;
-    this.setStageValue(model.withShownKind(Number(event.state)));
   }
 }
 

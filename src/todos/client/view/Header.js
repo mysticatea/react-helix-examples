@@ -14,9 +14,8 @@ export default class Header extends AgentComponent {
     const countActive = this.props.countActive;
 
     return <div className="todo-header">
-      <div className="todo-header-bar"/>
+      <div className="todo-header_bar"/>
       <input
-        className="todo-all-completed"
         type="checkbox"
         checked={!countActive}
         onChange={this.onCompletedChange}
@@ -42,7 +41,7 @@ css(`
   padding: calc(1em + 2px) 0 0 2em;
 }
 
-.todo-header > .todo-header-bar {
+.todo-header_bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -52,7 +51,7 @@ css(`
   border-bottom: 2px solid #1A237E;
 }
 
-.todo-header > .todo-all-completed {
+.todo-header > input[type="checkbox"] {
   display: inline-block;
   position: absolute;
   top: 2em;

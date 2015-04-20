@@ -35,7 +35,7 @@ export default class TodoItem extends AgentComponent {
       return <li className="todo-item" key={todo.id}>
         <input
           ref="titleEdit"
-          className="title-edit"
+          className="todo-item_title-edit"
           type="text"
           onBlur={this.onEditBlur}
           onKeyDown={this.onEditKeyDown}
@@ -43,10 +43,10 @@ export default class TodoItem extends AgentComponent {
       </li>;
     }
     else {
-      const className = "todo-item" + (todo.completed ? " completed" : "");
+      const className = "todo-item" + (todo.completed ? " todo-item_completed" : "");
       return <li className={className} key={todo.id}>
         <input
-          className="completed-checkbox"
+          className="todo-item_completed-checkbox"
           type="checkbox"
           checked={todo.completed}
           onChange={this.onCompletedChange}
@@ -54,7 +54,7 @@ export default class TodoItem extends AgentComponent {
         <label onDoubleClick={this.onLabelDoubleClick}>
           {todo.title}
         </label>
-        <button className="remove-button" onClick={this.onRemoveButtonClick}>
+        <button className="todo-item_remove-button" onClick={this.onRemoveButtonClick}>
           ✖
         </button>
       </li>;
@@ -110,7 +110,7 @@ css(`
   position: relative;
   padding: 0.25em 0 0.25em 2em;
 }
-.todo-item.completed {
+.todo-item.todo-item_completed {
   color: gray;
   text-decoration: line-through;
 }
@@ -118,7 +118,7 @@ css(`
   background: #E8EAF6;
 }
 
-.todo-item .title-edit {
+.todo-item .todo-item_title-edit {
   width: 100%;
   border: none;
   border-bottom: 1px solid gray;
@@ -126,7 +126,7 @@ css(`
   font-size: inherit;
 }
 
-.todo-item .completed-checkbox {
+.todo-item .todo-item_completed-checkbox {
   display: inline-block;
   position: absolute;
   left: 0;
@@ -140,7 +140,7 @@ css(`
   font-size: inherit;
 }
 
-.todo-item .remove-button {
+.todo-item .todo-item_remove-button {
   display: inline-block;
   visibility: hidden;
   position: absolute;
@@ -156,7 +156,7 @@ css(`
   line-height: 1;
   cursor: pointer;
 }
-.todo-item:hover .remove-button {
+.todo-item:hover .todo-item_remove-button {
   visibility: visible;
 }
 `);

@@ -24,19 +24,19 @@ export default class Footer extends AgentComponent {
     const shownKind = this.props.shownKind;
 
     return <div className="todo-footer">
-      <span className="todo-number">
+      <span className="todo-footer_counter-area">
         {countAll} items left
       </span>
-      <span className={"todo-clear" + (countCompleted > 0 ? " exists" : "")}>
+      <span className={"todo-footer_clear-button-area" + (countCompleted > 0 ? " todo-footer_target-exists" : "")}>
         <button onClick={this.onClearButtonClick}>
           Clear completed ({countCompleted})
         </button>
       </span>
-      <span className="todo-shown-kind">
+      <span className="todo-footer_switch-buttons-area">
         {SHOWN_KINDS.map(kind =>
           <button
             key={kind}
-            className={kind === shownKind ? "selected" : ""}
+            className={kind === shownKind ? "todo-footer_selected" : ""}
             data-kind={kind}
             onClick={this.onSwitchKindButtonClick}
           >
@@ -44,7 +44,7 @@ export default class Footer extends AgentComponent {
           </button>
         )}
       </span>
-      <span className="todo-explain">Double-click to edit a todo</span>
+      <span className="todo-footer_explain-area">Double-click to edit a todo</span>
     </div>;
   }
 
@@ -98,30 +98,29 @@ css(`
   text-decoration: underline;
 }
 
-.todo-footer > .todo-number {
+.todo-footer_counter-area {
   float: left;
   padding: 0.25em 0;
 }
 
-.todo-footer > .todo-clear {
+.todo-footer_clear-button-area {
   float: right;
   visibility: hidden;
 }
 
-.todo-footer > .todo-clear.exists {
+.todo-footer_clear-button-area.todo-footer_target-exists {
   visibility: visible;
 }
 
-.todo-footer > .todo-shown-kind {
+.todo-footer_switch-buttons-area {
   display: inline-block;
   margin: auto;
 }
 
-.todo-footer > .todo-explain {
+.todo-footer_explain-area {
   display: block;
   color: gray;
   font-size: 0.75em;
   white-space: nowrap;
 }
-
 `);
