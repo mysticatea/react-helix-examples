@@ -7,6 +7,7 @@ Examples for [react-helix](https://github.com/mysticatea/react-helix) library.
 ```
 git clone https://github.com/mysticatea/react-helix-examples.git
 cd react-helix-examples
+npm install
 ```
 
 ## Usage
